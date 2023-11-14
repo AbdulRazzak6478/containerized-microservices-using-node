@@ -1,0 +1,21 @@
+{
+  "name": "basic_node_config",
+  "version": "1.0.0",
+  "description": "basic node config practices",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx nodemon src/index.js"
+  },
+  "author": "Abdul Razzak",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.3.0",
+    "express": "^4.18.2",
+    "http-status-codes": "^2.2.0",
+    "mysql2": "^3.3.5",
+    "nodemon": "^2.0.22",
+    "sequelize": "^6.32.1",
+    "sequelize-cli": "^6.6.1",
+    "winston": "^3.9.0"
+  }
+}

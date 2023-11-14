@@ -1,0 +1,58 @@
+version: "3"
+networks:
+  microservice-network:
+    driver: bridge
+volumes:
+  api-gateway-node-modules:
+  booking-service-node-modules:
+  flights-service-node-modules:
+services:
+  api-gateway:
+    build: ./Auth-gateway
+    image: api_gateway
+    networks:
+      - microservice-network
+    ports:
+      - "5000:5000"
+    labels:
+      kompose.service.type: LoadBalancer
+  flights-service:
+    build: ./Flights_service
+    image: flight-service
+    networks:
+      - microservice-network
+    ports: 
+      - "3000:3000"
+    labels:
+      kompose.service.type: LoadBalancer
+  booking-service:
+    build: ./Booking-Service
+    image: booking-service
+    networks:
+      - microservice-network
+    ports:
+      - "4000:4000"
+    labels:
+      kompose.service.type: LoadBalancer
+    
+# docker compose up -d // run all containers in detached mode kind of like -dit
+
+# create a network
+# docker network create microservice-network
+
+# create volumes 
+# docker volume create flights-service_node_modules
+# docker volume create booking-service_node_modules
+# docker volume create api-gateway-service_node_modules
+
+# docker run -it --init --publish 3000:3000 -v "$(pwd)":/c/Users/ABDUL RAZZAK/Desktop/node-backend/containerized-microservices-using-node/Flight_service -v flights-service-node-modules:/c/Users/ABDUL RAZZAK/Desktop/node-backend/containerized-microservices-using-node/Flight_service
+# /node_modules flight-service:latest
+
+# docker build -t api_gateway .
+# docker run -dit --init api_gateway --network microservice-network -p 5000:5000 -v "$(pwd)":/c/Users/ABDUL RAZZAK/Desktop/node-backend/node_start/Auth-gateway -v api-gateway-node-modules:/c/Users/ABDUL RAZZAK/Desktop/node-backend/node_start/Auth-gateway/node_modules api_gateway:latest
+
+# docker build -t flight-service .
+# docker run -dit --init flight-service --network microservice-network  -p 3000:3000 -v "$(pwd)":/c/Users/ABDUL RAZZAK/Desktop/node-backend/node_start/Flight_service -v flights-service-node-modules:/c/Users/ABDUL RAZZAK/Desktop/node-backend/node_start/Flight_service/node_modules flight-service:latest
+
+# docker build -t booking-service .
+#  docker run -dit --init booking-service --network microservice-network  -p 4000:4000 -v "$(pwd)":/c/Users/ABDUL RAZZAK/Desktop/node-backend/node_start/Booking-service -v booking-service-node-modules:/c/Users/ABDUL RAZZAK/Desktop/node-backend/node_start/Booking-service/node_modules booking-service:latest

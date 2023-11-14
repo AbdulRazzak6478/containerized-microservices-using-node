@@ -1,0 +1,25 @@
+{
+  "name": "Auth_Api_Gateway",
+  "version": "1.0.0",
+  "description": "Authentication to flight service",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx nodemon src/index.js"
+  },
+  "author": "Abdul Razzak",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.3.0",
+    "express": "^4.18.2",
+    "express-rate-limit": "^7.0.2",
+    "http-proxy-middleware": "^2.0.6",
+    "http-status-codes": "^2.2.0",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.3.5",
+    "nodemon": "^2.0.22",
+    "sequelize": "^6.32.1",
+    "sequelize-cli": "^6.6.1",
+    "winston": "^3.9.0"
+  }
+}
