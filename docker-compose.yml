@@ -1,6 +1,6 @@
-version: "3"
+version: "4"
 networks:
-  microservice-network:
+  micro-net:
     driver: bridge
 volumes:
   api-gateway-node-modules:
@@ -9,31 +9,70 @@ volumes:
 services:
   api-gateway:
     build: ./Auth-gateway
-    image: api_gateway
+    image: api-gateway
     networks:
-      - microservice-network
+      - micro-net
     ports:
       - "5000:5000"
     labels:
       kompose.service.type: LoadBalancer
   flights-service:
-    build: ./Flights_service
+    build: ./Flight_service
     image: flight-service
     networks:
-      - microservice-network
+      - micro-net
     ports: 
       - "3000:3000"
     labels:
       kompose.service.type: LoadBalancer
   booking-service:
-    build: ./Booking-Service
+    build: ./Booking-service
     image: booking-service
     networks:
-      - microservice-network
+      - micro-net
     ports:
       - "4000:4000"
     labels:
       kompose.service.type: LoadBalancer
+
+
+
+# version: "4"
+# networks:
+#   microservice-network:
+#     driver: bridge
+# volumes:
+#   api-gateway-node-modules:
+#   booking-service-node-modules:
+#   flights-service-node-modules:
+# services:
+#   api-gateway:
+#     build: ./Auth-gateway
+#     image: api_gateway
+#     networks:
+#       - microservice-network
+#     ports:
+#       - "5000:5000"
+#     labels:
+#       kompose.service.type: LoadBalancer
+#   flights-service:
+#     build: ./Flight_service
+#     image: flight-service
+#     networks:
+#       - microservice-network
+#     ports: 
+#       - "3000:3000"
+#     labels:
+#       kompose.service.type: LoadBalancer
+#   booking-service:
+#     build: ./Booking-service
+#     image: booking-service
+#     networks:
+#       - microservice-network
+#     ports:
+#       - "4000:4000"
+#     labels:
+#       kompose.service.type: LoadBalancer
     
 # docker compose up -d // run all containers in detached mode kind of like -dit
 

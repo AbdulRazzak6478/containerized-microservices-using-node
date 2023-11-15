@@ -13,7 +13,7 @@ router.use('/flights',flightRoutes);
 
 router.get('/info',info) 
 router.get('/info/new',(req,res)=>{
-    return res.json({msg:'router is setup in container'});
+    return res.json({msg:'router is setup in container by not specifying the pwd and volume'});
 })
 
 module.exports = router;
