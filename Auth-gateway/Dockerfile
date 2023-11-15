@@ -1,6 +1,6 @@
 FROM node
 
-WORKDIR /c/Users/ABDUL RAZZAK/Desktop/node-backend/node_start/Auth-gateway
+WORKDIR /c/Users/ABDUL RAZZAK/Desktop/node-backend/containerized-microservices-using-node/Auth-gateway
 
 ENV NODE_ENV=production
 

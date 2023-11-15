@@ -7,33 +7,77 @@ volumes:
   booking-service-node-modules:
   flights-service-node-modules:
 services:
-  api-gateway:
+  api_gateway:
     build: ./Auth-gateway
-    image: api-gateway
-    networks:
+    networks: 
       - micro-net
-    ports:
+    ports :
       - "5000:5000"
-    labels:
-      kompose.service.type: LoadBalancer
-  flights-service:
-    build: ./Flight_service
-    image: flight-service
-    networks:
-      - micro-net
-    ports: 
-      - "3000:3000"
-    labels:
-      kompose.service.type: LoadBalancer
-  booking-service:
+    volumes:
+      - ./Auth-gateway:/c/Users/ABDUL RAZZAK/Desktop/node-backend/containerized-microservices-using-node/Auth-gateway
+      - api-gateway-node-modules:/c/Users/ABDUL RAZZAK/Desktop/node-backend/containerized-microservices-using-node/Auth-gateway/node_modules
+  booking_service:
     build: ./Booking-service
-    image: booking-service
-    networks:
+    networks: 
       - micro-net
-    ports:
+    ports :
       - "4000:4000"
-    labels:
-      kompose.service.type: LoadBalancer
+    volumes:
+      - ./Booking-service:/c/Users/ABDUL RAZZAK/Desktop/node-backend/containerized-microservices-using-node/Booking-service
+      - booking-service-node-modules:/c/Users/ABDUL RAZZAK/Desktop/node-backend/containerized-microservices-using-node/Booking-service/node_modules
+  flights_service:
+    build: ./Flight_service
+    networks: 
+      - micro-net
+    ports :
+      - "3000:3000"
+    volumes:
+      - ./Flight_service:/c/Users/ABDUL RAZZAK/Desktop/node-backend/containerized-microservices-using-node/Flight_service
+      - flights-service-node-modules:/c/Users/ABDUL RAZZAK/Desktop/node-backend/containerized-microservices-using-node/Flight_service/node_modules
+
+
+
+
+
+
+
+
+# version: "4"
+# networks:
+#   micro-net:
+#     driver: bridge
+# volumes:
+#   api-gateway-node-modules:
+#   booking-service-node-modules:
+#   flights-service-node-modules:
+# services:
+#   api-gateway:
+#     build: ./Auth-gateway
+#     image: api-gateway
+#     networks:
+#       - micro-net
+#     ports:
+#       - "5000:5000"
+#     labels:
+#       kompose.service.type: LoadBalancer
+#   flights-service:
+#     build: ./Flight_service
+#     image: flight-service
+#     networks:
+#       - micro-net
+#     ports: 
+#       - "3000:3000"
+#     labels:
+#       kompose.service.type: LoadBalancer
+#   booking-service:
+#     build: ./Booking-service
+#     image: booking-service
+#     networks:
+#       - micro-net
+#     ports:
+#       - "4000:4000"
+#     labels:
+#       kompose.service.type: LoadBalancer
 
 
 

@@ -1,6 +1,6 @@
 FROM node
 
-WORKDIR /c/Users/ABDUL RAZZAK/Desktop/node-backend/node_start/Flight_service
+WORKDIR /c/Users/ABDUL RAZZAK/Desktop/node-backend/containerized-microservices-using-node/Flight_service
 
 ENV NODE_ENV=production
 

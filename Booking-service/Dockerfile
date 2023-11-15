@@ -1,6 +1,6 @@
 FROM node
 
-WORKDIR /c/Users/ABDUL RAZZAK/Desktop/node-backend/node_start/Booking-service
+WORKDIR /c/Users/ABDUL RAZZAK/Desktop/node-backend/containerized-microservices-using-node/Booking-service
 
 ENV NODE_ENV=production
 
